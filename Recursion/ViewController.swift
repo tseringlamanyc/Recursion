@@ -16,12 +16,27 @@ class ViewController: UIViewController {
     }
 
     @IBAction func performOperation(_ sender: Any) {
-        
+        recurse(num: 7)
+        countdownToZero(num: 10)
+        let result = factorialOperation(num: 4)
+        print(result)
     }
     
-    func recurse() {
+    func recurse(num: Int) {
+        guard num > 0 else {return}
         print("hi")
-        recurse()
+        recurse(num: num - 1) // 6,5,4,3,2,1   // arguement 
+    }
+    
+    func countdownToZero (num: Int) {
+        guard num >= 0 else {return}
+        print(num)
+        countdownToZero(num: num - 1)
+    }
+    
+    func factorialOperation (num: Int) -> Int {
+        guard num > 1 else {return 1}
+        return num * factorialOperation(num: num - 1)
     }
     
 }
